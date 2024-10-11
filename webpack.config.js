@@ -1,23 +1,23 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = (env, argv) => {
-  const isProduction = argv.mode === "production";
+  const isProduction = argv.mode === 'production';
 
   return {
-    entry: "./src/index.jsx",
+    entry: './src/index.jsx',
     output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: isProduction ? "[name].[contenthash].js" : "bundle.js",
+      path: path.resolve(__dirname, 'dist'),
+      filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
       clean: true,
     },
-    mode: isProduction ? "production" : "development",
-    devtool: isProduction ? "source-map" : "inline-source-map",
+    mode: isProduction ? 'production' : 'development',
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
-      static: path.resolve(__dirname, "dist"),
+      static: path.resolve(__dirname, 'dist'),
       port: 3000,
       open: true,
     },
@@ -26,13 +26,13 @@ module.exports = (env, argv) => {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: "babel-loader",
+          use: 'babel-loader',
         },
         {
           test: /\.css$/,
           use: [
-            isProduction ? MiniCssExtractPlugin.loader : "style-loader",
-            "css-loader",
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader',
           ],
         },
       ],
@@ -42,11 +42,11 @@ module.exports = (env, argv) => {
       minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     },
     resolve: {
-      extensions: [".js", ".jsx"],
+      extensions: ['.js', '.jsx'],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./public/index.html",
+        template: './public/index.html',
         minify: isProduction && {
           collapseWhitespace: true,
           removeComments: true,
@@ -54,7 +54,7 @@ module.exports = (env, argv) => {
       }),
       isProduction &&
         new MiniCssExtractPlugin({
-          filename: "[name].[contenthash].css",
+          filename: '[name].[contenthash].css',
         }),
     ].filter(Boolean),
   };
