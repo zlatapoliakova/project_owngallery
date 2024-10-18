@@ -1,0 +1,5 @@
+* text=auto
+*.js text eol=lf
+*.json text eol=lf
+*.svg text eol=lf
+.husky/pre-commit text eol=lf
