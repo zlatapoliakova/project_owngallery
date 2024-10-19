@@ -1,38 +1,72 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
-  const isProduction = argv.mode === 'production';
+  const isProduction = argv.mode === "production";
 
   return {
-    entry: './src/index.jsx',
+    entry: "./src/index.jsx",
     output: {
-      path: path.resolve(__dirname, 'dist'),
-      filename: isProduction ? '[name].[contenthash].js' : 'bundle.js',
+      path: path.resolve(__dirname, "dist"),
+      filename: isProduction ? "[name].[contenthash].js" : "bundle.js",
       clean: true,
+      publicPath: "/",
     },
-    mode: isProduction ? 'production' : 'development',
-    devtool: isProduction ? 'source-map' : 'inline-source-map',
+    mode: isProduction ? "production" : "development",
+    devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
-      static: path.resolve(__dirname, 'dist'),
+      static: path.resolve(__dirname, "dist"),
       port: 3000,
       open: true,
+      historyApiFallback: true,
     },
     module: {
       rules: [
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: 'babel-loader',
+          use: "babel-loader",
         },
         {
-          test: /\.css$/,
+          test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
           use: [
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[ext]",
+                outputPath: "assets/",
+              },
+            },
+          ],
+        },
+        {
+          test: /\.s[ac]ss$/,
+          use: [
+            {
+              loader: require("mini-css-extract-plugin").loader,
+            },
+            {
+              loader: "css-loader",
+              options: {
+                importLoaders: 2,
+              },
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                sassOptions: {
+                  includePaths: [
+                    path.resolve(
+                      __dirname,
+                      "../node_modules/normalize-scss/sass",
+                    ),
+                  ],
+                },
+              },
+            },
           ],
         },
       ],
@@ -42,20 +76,17 @@ module.exports = (env, argv) => {
       minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     },
     resolve: {
-      extensions: ['.js', '.jsx'],
+      extensions: [".js", ".jsx"],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './public/index.html',
+        template: "./public/index.html",
         minify: isProduction && {
           collapseWhitespace: true,
           removeComments: true,
         },
       }),
-      isProduction &&
-        new MiniCssExtractPlugin({
-          filename: '[name].[contenthash].css',
-        }),
+      new MiniCssExtractPlugin({ filename: "[name].css", ignoreOrder: true }),
     ].filter(Boolean),
   };
 };
