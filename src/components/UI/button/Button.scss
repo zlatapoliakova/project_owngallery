@@ -1,0 +1,43 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  min-width: 200px;
+  border-radius: 10px;
+  cursor: pointer;
+  gap: 10px;
+  &__default {
+    background: var(
+      --gradient,
+      linear-gradient(90deg, #0078d4 0%, #00e6d7 100%)
+    );
+    border: none;
+    color: #fff;
+    &__small {
+      background: var(
+        --gradient,
+        linear-gradient(90deg, #0078d4 0%, #00e6d7 100%)
+      );
+      border: none;
+      color: #fff;
+      width: 300px;
+    }
+  }
+
+  &__outline {
+    border: 1px solid var(--gradient, #0078d4);
+    background: transparent;
+    color: #808080;
+  }
+
+  &__small {
+    min-width: 133px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #808080;
+    color: #808080;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

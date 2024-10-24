@@ -1,19 +1,24 @@
-import './App.css';
+import "./App.scss";
 
-import React from 'react';
+import React from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Footer from './Footer';
-import Header from './Header';
+import AddPost from "../pages/AddPost";
+import Authorization from "../pages/Authorization";
+import Main from "../pages/Main";
+import Profile from "../pages/Profile";
 
 const App = () => {
   return (
-    <div className="app-container">
-      <Header />
-      <main>
-        <h1>Welcome to Custom React App</h1>
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/main" element={<Main />} />
+        <Route path="/add" element={<AddPost />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/auth" element={<Authorization />} />
+        <Route path="*" element={<Navigate to="/auth" />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
