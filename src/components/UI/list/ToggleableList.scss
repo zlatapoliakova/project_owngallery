@@ -1,0 +1,25 @@
+.toggleable-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  &__item {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    background-color: #c0bfbf;
+    color: #f0f0f0;
+    font-size: 16px;
+    font-weight: 500;
+    &:hover {
+      background-color: #0078d4;
+    }
+  }
+}
+
+.toggleable-list__item.active {
+  background-color: #0078d4;
+}

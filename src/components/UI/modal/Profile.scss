@@ -1,0 +1,62 @@
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.error-message {
+  color: red;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  padding: 42px 54px 64px 54px;
+  gap: 70px;
+  border-radius: 20px;
+  background: #fff;
+  z-index: 1001;
+
+  &__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 279px;
+
+    &__profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: #333;
+      font-size: 18px;
+      font-weight: 500;
+
+      input {
+        color: #000; 
+        border: 1px solid #ccc; 
+        border-radius: 4px; 
+        padding: 8px; 
+        outline: none;
+
+        &:focus {
+          border-color: #333;
+        }
+      }
+    }
+  }
+}

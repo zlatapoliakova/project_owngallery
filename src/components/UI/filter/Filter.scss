@@ -1,0 +1,21 @@
+.filter {
+  display: flex;
+  width: 142px;
+  height: 44px;
+  gap: 10px;
+  padding: 0px 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: 1px solid #dcd8d8;
+}
+
+@media (max-width: 576px) {
+  .filter {
+    padding:10px;
+    &__txt {
+      display: none;
+    }
+  }
+}

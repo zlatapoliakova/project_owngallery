@@ -6,7 +6,8 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "lint": "eslint . --max-warnings 0",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -31,9 +32,10 @@
     "file-loader": "^6.2.0",
     "globals": "^15.11.0",
     "html-webpack-plugin": "^5.6.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.10",
     "mini-css-extract-plugin": "^2.9.1",
-    "prettier": "3.3.3",
+    "prettier": "^3.3.3",
     "sass": "^1.79.5",
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
@@ -44,14 +46,20 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
+    "axios": "^1.7.7",
+    "json-server": "^1.0.0-beta.3",
     "normalize-scss": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0",
-    "save": "^2.9.0"
+    "react-router-dom": "^6.27.0"
   },
-	"lint-staged": {
-		"*.js": "npm run lint",
-		"*.{js,css,md,html,json}": "npm run format"
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,css,md,html,json}": [
+      "prettier --write"
+    ]
   }
 }

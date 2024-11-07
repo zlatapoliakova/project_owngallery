@@ -1,19 +1,15 @@
-import './App.css';
+import "./App.scss";
 
-import React from 'react';
+import React from "react";
 
-import Footer from './Footer';
-import Header from './Header';
+import { UserProvider } from "../context/UserContext";
+import { CastomRoute } from "../route";
 
 const App = () => {
   return (
-    <div className="app-container">
-      <Header />
-      <main>
-        <h1>Welcome to Custom React App</h1>
-      </main>
-      <Footer />
-    </div>
+    <UserProvider>
+      <CastomRoute />
+    </UserProvider>
   );
 };
 
