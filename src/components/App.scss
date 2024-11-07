@@ -22,7 +22,7 @@ body {
     background: grey;
   }
   &__txt {
-    &__descr {
+    &__title {
       color: #0e0e0e;
       font-size: 18px;
       font-weight: 700;
@@ -44,6 +44,38 @@ body {
   max-width: 1680px;
   padding: 32px 120px;
   gap: 24px;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #e0e0e0;
+}
+
+.pagination button.active {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.pagination button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
 }
 
 .content {
@@ -74,10 +106,11 @@ body {
   &__block {
     display: flex;
     flex-direction: column;
+    max-width: 498px;
     gap: 16px;
     &__image {
       display: flex;
-      width: 498px;
+      width: 100%;
       height: 442px;
       padding: 129px 149px;
       justify-content: center;
@@ -98,6 +131,7 @@ body {
   &__text {
     display: flex;
     flex-direction: column;
+    max-width: 550px;
     gap: 24px;
     &__item {
       display: flex;
@@ -107,7 +141,6 @@ body {
     &__category {
       display: flex;
       flex-direction: column;
-      width: 550px;
       padding: 30px;
       padding: 30px;
       gap: 20px;
@@ -127,8 +160,7 @@ body {
   gap: 29px;
   padding: 20px 120px;
   &__img {
-    width: 125px;
-    height: 125px;
+    width: 100%;
     border-radius: 100%;
   }
   &__txt {
@@ -148,6 +180,7 @@ body {
       color: #0e0e0e;
       font-size: 32px;
       font-weight: 500;
+      white-space: nowrap;
     }
   }
 }
@@ -214,6 +247,218 @@ body {
     bottom: 57px;
     left: 48%;
     width: 63px;
-    height: 56x;
+    height: 56px;
+  }
+}
+
+.error__page__txt {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.error__page__img {
+  display: block;
+  margin: 0 auto;
+  height: 600px;
+}
+
+@media (max-width: 1200px) {
+  .authorization {
+    &__block {
+      &__intro {
+        h1 {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .authorization {
+    &__block {
+      &__intro {
+        h1 {
+          font-size: 27px;
+        }
+        h2 {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .post {
+    max-width: 260px;
+  
+    &__txt {
+      &__title {
+        color: #0e0e0e;
+        font-size: 20px;
+        font-weight: 700;
+      }
+  
+      &__user-name {
+        color: #808080;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+  }
+  
+  .list {
+    padding: 32px 80px;
+    gap: 18px;
+  }
+
+  .add {
+    gap: 70px;
+    &__block {
+      max-width: 368px;
+      &__image {
+        height: 355px;
+      }
+    }
+    &__text {
+      max-width: 400px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .authorization {
+    &__block {
+      width: 70%;
+    }
+    img {
+      position: absolute;
+      bottom: 36px;
+      left: 48%;
+      width: 57px;
+    }
+  }
+
+  .post {
+    max-width: 280px;
+    &__txt {
+      &__title {
+        color: #0e0e0e;
+        font-size: 20px;
+        font-weight: 700;
+      }
+  
+      &__user-name {
+        color: #808080;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .add {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    &__block {
+      max-width: 550px;
+      &__image {
+        width: 550px;
+        height: 442px;
+      }
+    }
+    &__text {
+      max-width: 550px;
+    }
+  }
+
+  .pagination button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+   .authorization {
+    &__block {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  .post {
+    max-width: 280px;
+  
+    &__txt {
+      &__title {
+        color: #0e0e0e;
+        font-size: 20px;
+        font-weight: 700;
+      }
+  
+      &__user-name {
+        color: #808080;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    }
+  }
+  
+  .search {
+    padding: 20px 80px;
+    gap: 50px;
+  }
+  
+  .list {
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .add {
+    &__block {
+      max-width:500px;
+      &__image {
+        width: 500px;
+        height: 400px;
+      }
+    }
+  
+    &__text {
+      max-width: 500px;
+    }
+  }
+
+  .profail__info {
+      justify-content: center;
+      padding: 20px 80px;
+      &__img {
+        width: 50px;
+        height: 50px;
+      }
+  
+      &__txt {
+        padding: 20px 0;
+        &__up {
+          flex-direction: column;
+        }
+        &__email {
+          display: none;
+        }
+  
+        &__name {
+          color: #0e0e0e;
+          font-size: 24px;
+          font-weight: 500;
+        }
+      }
+    }
+
+  .pagination {
+    gap: 4px;
+  }
+  
+  .pagination button {
+    padding: 4px 8px;
+    font-size: 12px;
   }
 }

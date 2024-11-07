@@ -6,10 +6,17 @@ import image_avatar from "../../../img/avatar_profile.png";
 import close from "../../../img/close.svg";
 import delete_logo from "../../../img/delete_post_logo.svg";
 import edit from "../../../img/edit_post_logo.svg";
-import image_post from "../../../img/modal__image.png";
 import Button from "../button/Button";
 
-const PostModal = ({ isOpen, onClose, hideButtons = true }) => {
+const PostModal = ({
+  image,
+  userName,
+  description,
+  title,
+  isOpen,
+  onClose,
+  hideButtons = true,
+}) => {
   if (!isOpen) return null;
 
   return (
@@ -24,38 +31,35 @@ const PostModal = ({ isOpen, onClose, hideButtons = true }) => {
             />
             <div className="modal__post__header__user__txt">
               <span className="modal__post__header__user__txt__name">
-                Title
+                {title}
               </span>
               <span className="modal__post__header__user__txt__email">
-                Alison Richardson
+                {userName}
               </span>
             </div>
           </div>
-          <div className="modal__post__header__logo ">
+          <div className="modal__post__header__btns ">
             {!hideButtons && (
-              <>
+              <div className="modal__post__header__btns__first ">
                 <Button variant="small">
                   <img src={edit} alt="Edit logo" />
-                  Edit
+                  <div className="modal__post__header__btns__first__btn">
+                    Edit
+                  </div>
                 </Button>
                 <Button variant="small">
                   <img src={delete_logo} alt="Delete logo" />
-                  Delete
+                  <div className="modal__post__header__btns__first__btn">
+                    Delete
+                  </div>
                 </Button>
-              </>
+              </div>
             )}
             <img src={close} alt="Logo" onClick={onClose} />
           </div>
         </div>
-        <img
-          className="modal__post__image"
-          src={image_post}
-          alt="Modal Content"
-        />
-        <div className="modal__post__text">
-          Lorem ipsum dolor sit amet consectetur. Dolor dictumst pulvinar
-          sollicitudin at arcu auctor aliquam.
-        </div>
+        <img className="modal__post__image" src={image} alt="Modal Content" />
+        <div className="modal__post__text">{description}</div>
       </div>
     </div>
   );

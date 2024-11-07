@@ -13,7 +13,7 @@ const AddPost = () => {
   const navigate = useNavigate();
 
   const handleMainClick = () => {
-    navigate("/main");
+    navigate("/");
   };
 
   return (

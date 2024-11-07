@@ -8,7 +8,7 @@ const Filter = ({ onClick }) => {
   return (
     <div className="filter" onClick={onClick}>
       <img src={filter} alt="Logo filter" />
-      Filter
+      <div className="filter__txt">Filter</div>
     </div>
   );
 };

@@ -15,4 +15,12 @@
   gap: 10px;
   border-radius: 20px;
   border: 1px solid #dcd8d8;
+}
+@media (max-width: 576px) {
+  .filter {
+    padding: 10px;
+  }
+  .filter__txt {
+    display: none;
+  }
 } /*# sourceMappingURL=Filter.min.css.map */

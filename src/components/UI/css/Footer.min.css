@@ -1,4 +1,5 @@
 .footer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,4 +14,11 @@
   align-items: center;
   border-top: 1px solid #dcd8d8;
   background: #f0f0f0;
+  bottom: 0;
+}
+@media (max-width: 576px) {
+  .footer {
+    font-size: 12px;
+    padding: 0 80px;
+  }
 } /*# sourceMappingURL=Footer.min.css.map */

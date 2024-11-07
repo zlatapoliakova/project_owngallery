@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 import PostModal from "../components/UI/modal/PostModal";
-import picture from "../img/post.jpg";
-
-const PostItem = ({ hideButtons }) => {
+import post_default from "../img/post_bg.png";
+const PostItem = ({ image, title, userName, description, hideButtons }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -17,17 +16,20 @@ const PostItem = ({ hideButtons }) => {
   return (
     <div>
       <div className="post" onClick={openModal}>
-        <img className="post__img" src={picture} alt="Picture" />
+        <img className="post__img" src={image || post_default} alt="Picture" />
         <div className="post_txt">
-          <p className="post__txt__descr">Lorem ipsum dolor sit amet</p>
-          <span className="post__txt__user-name">Alice Spilberg</span>
+          <p className="post__txt__title">{title}</p>
+          <span className="post__txt__user-name">{userName}</span>
         </div>
       </div>
       <PostModal
         isOpen={isModalOpen}
         onClose={closeModal}
         hideButtons={hideButtons}
-        image={picture}
+        image={image || post_default}
+        title={title}
+        description={description}
+        userName={userName}
       />
     </div>
   );

@@ -4,9 +4,18 @@ import React from "react";
 
 import cn from "../../../utils";
 
-const Button = ({ onClick, children, variant = "default" }) => {
+const Button = ({
+  onClick,
+  children,
+  variant = "default",
+  type = "button",
+}) => {
   return (
-    <button onClick={onClick} className={cn("btn", `btn__${variant}`)}>
+    <button
+      onClick={onClick}
+      className={cn("btn", `btn__${variant}`)}
+      type={type}
+    >
       {children}
     </button>
   );
